@@ -91,3 +91,85 @@ void main()
 	printf("%f",s);
 }
 v3
+#include"stdio.h"
+#include"string.h"
+#include"stdlib.h"
+
+int isoperator(char c)
+{
+	if(c=='+'||c=='*'||c=='/') return 1;
+	else return 0;
+}  
+
+void moveoperator(char *p)
+{
+	while(*p!='\0')
+	{
+		*p=*(p+1);
+	   	p++;
+	}
+}
+
+void moveoperand();
+int main()
+{
+	printf ("请输入一个表达式包含加减乘除\n");
+	char strExp[100];
+	scanf ("%s",strExp);
+	char operators[100]={'\0'};
+	float operands[100];
+	int operatorsIndex=0;
+	for (int i=0;i<strExp[i];i++)
+	   {
+   		  if(isoperator(strExp[i]))
+   		   {
+   		   	operators[operatorsIndex]=strExp[i];
+   		   	operatorsIndex++;
+   		   }
+   	   }
+ 
+ int operandsIndex=0;
+  for(int i;i<strlen(strExp);i++)
+    {
+    	char temp[100]={'\0'};
+    	int tempIndex=0;
+    	while(isoperator(strExp[i]))
+    	     {
+     	    	temp[tempIndex]=strExp[i];
+				 i++;
+     	    }
+     	    tempIndex++;
+     	    float float=atot(temp);
+     	    char *poperator =operators;
+     	    float *poperand= operands;
+     	    while(*poperator!='\0')
+     	    {
+    	     	if (*poperator=='*')
+    	     	  {
+  	     	    	float lertoperand=*poperand;
+  	     	    	float rightoperand=*(poperand+1);
+  	     	    	float res = leftoperand*rightoperand;
+  	     	    	*poperand=res;
+  	     	    	moveoperand(poperator);
+  	     	    	moveoperand(poperand+1,&operands[operandsIndex--]);
+  	     	      }
+            }
+            else if(*poperator == '+')
+                  {
+                  	float leftoperand =*poperand;
+                  	float rightoperand =*(poperand+1);
+                  	float res = leftoperand/rightoperand;
+                  	*poperand =res;
+                  	moveoperator(poperator);
+                  	moveoperand(poperand+1,&operands[operandsTndex--]);
+                  }
+            else if
+                {
+                	poperator ++;
+                	poperand --;
+                }
+    }
+    printf("结果为：%0.2s\n",operands[0]);
+    return 0;
+}
+//v4
