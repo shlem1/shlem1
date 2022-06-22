@@ -9,7 +9,7 @@ struct atm
 	char name[20];
 };
 struct atm atm1[6];
-void Init();
+	void Init();
 void welcome();
 void login();
 void display();
@@ -20,7 +20,7 @@ void changepwd();
 void transfer();
 void quit();
 void cunkuan();
-int main()
+void main()
 {
 
 	Init();
@@ -30,7 +30,7 @@ void Init()
 {
 	int i;
     FILE *fp;
-	fp=fopen("D:\\atm.txt","r");
+	fp=fopen("C:\\Users\\cqie\\Desktop\\date.txt","r");
 	for(i=0;i<6;i++)
 	fscanf(fp,"%s%d%d%f",atm1[i].name,&atm1[i].kh,&atm1[i].mm,&atm1[i].yue);
 	for(i=0;i<6;i++)
@@ -128,7 +128,7 @@ void login()
 		scanf("%f",&m);
 		if((m>0)&&(m<=atm1[pos].yue))
 		{
-            fp=fopen("D:\\atm.txt","wb+");
+            fp=fopen("C:\\Users\\cqie\\Desktop\\date.txt","wb+");
 			atm1[pos].yue=atm1[pos].yue-m;
 		    t();
 			printf("**取款成功**");
@@ -144,7 +144,7 @@ void login()
 	{
 	int i;
     FILE *fp;
-	fp=fopen("D:\\atm.txt","w");
+	fp=fopen("C:\\Users\\cqie\\Desktop\\date.txt","w");
 	for(i=0;i<6;i++)
 	fprintf(fp,"%s %d %d %f\n",atm1[i].name,atm1[i].kh,atm1[i].mm,atm1[i].yue);
 	}
